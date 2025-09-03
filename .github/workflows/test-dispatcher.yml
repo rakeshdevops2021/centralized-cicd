@@ -1,0 +1,34 @@
+name: Test Dispatcher
+on:
+  workflow_dispatch:
+    inputs:
+      tech_stack:
+        type: choice
+        description: "Choose tech stack"
+        options:
+          - java
+          - python
+          - node
+      sonar_enabled:
+        type: choice
+        description: "Enable SonarQube"
+        default: "no"
+        options:
+          - yes
+          - no
+      sonar_projectKey:
+        description: "SonarQube Project Key"
+        default: "demo-project"
+      sonar_org:
+        description: "SonarQube Organization"
+        default: "demo-org"
+
+jobs:
+  call-dispatcher:
+    uses: ./.github/workflows/dispatcher.yml
+    with:
+      tech_stack: ${{ github.event.inputs.tech_stack }}
+      sonar_enabled: ${{ github.event.inputs.sonar_enabled }}
+      sonar_projectKey: ${{ github.event.inputs.sonar_projectKey }}
+      sonar_org: ${{ github.event.inputs.sonar_org }}
+    secrets: inherit
