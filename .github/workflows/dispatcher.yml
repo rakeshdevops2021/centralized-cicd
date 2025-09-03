@@ -1,0 +1,7 @@
+name: Dispatcher
+on: workflow_dispatch
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Dispatcher workflow is ready"
