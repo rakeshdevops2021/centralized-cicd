@@ -1,5 +1,25 @@
 name: Dispatcher
-on: workflow_dispatch
+on:
+  workflow_call:
+    inputs:
+      tech_stack:
+        description: "Technology stack (java/python/node)"
+        required: true
+        type: string
+      sonar_enabled:
+        description: "Enable SonarQube scan (yes/no)"
+        required: false
+        default: "no"
+        type: string
+      sonar_projectKey:
+        description: "SonarQube Project Key"
+        required: false
+        type: string
+      sonar_org:
+        description: "SonarQube Organization"
+        required: false
+        type: string
+
 jobs:
   hello:
     runs-on: ubuntu-latest
