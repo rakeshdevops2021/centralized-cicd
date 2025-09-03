@@ -1,0 +1,16 @@
+name: SonarQube Scan
+on:
+  workflow_call:
+    inputs:
+      projectKey:
+        required: true
+        type: string
+      organization:
+        required: true
+        type: string
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🔍 Running SonarQube scan for project ${{ github.event.inputs.projectKey }} in org ${{ github.event.inputs.organization }}"
