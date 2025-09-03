@@ -1,0 +1,12 @@
+name: Java Build
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p build
+          echo "Hello from Java Build" > build/app.jar
